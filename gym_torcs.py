@@ -243,7 +243,9 @@ class TorcsEnv:
                      'opponents',
                      'rpm',
                      'track',
-                     'wheelSpinVel']
+                     'wheelSpinVel',
+                     'angle',
+                     'trackPos']
             Observation = col.namedtuple('Observaion', names)
             return Observation(focus=np.array(raw_obs['focus'], dtype=np.float32)/200.,
                                speedX=np.array(raw_obs['speedX'], dtype=np.float32)/self.default_speed,
@@ -252,7 +254,10 @@ class TorcsEnv:
                                opponents=np.array(raw_obs['opponents'], dtype=np.float32)/200.,
                                rpm=np.array(raw_obs['rpm'], dtype=np.float32),
                                track=np.array(raw_obs['track'], dtype=np.float32)/200.,
-                               wheelSpinVel=np.array(raw_obs['wheelSpinVel'], dtype=np.float32))
+                               wheelSpinVel=np.array(raw_obs['wheelSpinVel'], dtype=np.float32),
+                               angle=np.array(raw_obs['angle'], dtype=np.float32),
+                               trackPos=np.array(raw_obs['trackPos'], dtype=np.float32)
+                               )
         else:
             names = ['focus',
                      'speedX', 'speedY', 'speedZ',
@@ -260,7 +265,9 @@ class TorcsEnv:
                      'rpm',
                      'track',
                      'wheelSpinVel',
-                     'img']
+                     'img',
+                     'angle',
+                     'trackPos']
             Observation = col.namedtuple('Observaion', names)
 
             # Get RGB from observation
@@ -274,4 +281,6 @@ class TorcsEnv:
                                rpm=np.array(raw_obs['rpm'], dtype=np.float32),
                                track=np.array(raw_obs['track'], dtype=np.float32)/200.,
                                wheelSpinVel=np.array(raw_obs['wheelSpinVel'], dtype=np.float32),
-                               img=image_rgb)
+                               img=image_rgb,
+                               angle=np.array(raw_obs['angle'], dtype=np.float32),
+                               trackPos=np.array(raw_obs['trackPos'], dtype=np.float32))
